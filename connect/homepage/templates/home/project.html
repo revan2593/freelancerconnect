@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer and Business Login</title>
+    <link rel="stylesheet" href="{%static 'home/project.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>Projects </h1>
+    </header>
+    <div class="container">
+        {% for project in projects %}
+            <div class="projectcard"> 
+                <h2>{{project.Title}} </h2>
+                
+                <h3>{{project.Description}}</h3>
+                <h3>skills required: {{project.RequiredSkills}}</h3>
+                <h3>Budget: {{project.Budget}}</h3>
+                <h3>Deadline: {{project.Deadline}}</h3>
+                <h3>PostDate: {{project.PostDate}}</h3>
+                <a href="apply/"> Apply </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>© 2024 Freelancer Connect. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
