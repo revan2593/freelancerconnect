@@ -7,22 +7,36 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+from django.contrib.auth.models import User
 
-class Business(models.Model):
-    businessid = models.AutoField(db_column='BusinessID', primary_key=True)  # Field name made lowercase.
-    businessname = models.CharField(db_column='BusinessName', max_length=100)  # Field name made lowercase.
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=150, unique=True)
+    ROLE_CHOICES = (
+        ('freelancer', 'Freelancer'),
+        ('business', 'Business'),
+    )
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+
+    def __str__(self):
+        return self.user.username
+
+
+
+
+
+class Business1(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
     businesstype = models.CharField(db_column='BusinessType', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    location = models.CharField(db_column='Location', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    email = models.CharField(db_column='Email', max_length=100)  # Field name made lowercase.
-    phonenumber = models.CharField(db_column='PhoneNumber', max_length=20, blank=True, null=True)  # Field name made lowercase.
-    joineddate = models.DateField(db_column='JoinedDate')  # Field name made lowercase.
-    rating = models.DecimalField(db_column='Rating', max_digits=3, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    websiteurl = models.CharField(db_column='WebsiteURL', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    company_name = models.CharField(max_length=255)
+    headquarters = models.CharField(max_length=255, blank=True, null=True)
+    email = models.EmailField(unique=True)
+    website_link = models.URLField(max_length=255, blank=True, null=True)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.00)
 
-    class Meta:
-        managed = False
-        db_table = 'Business'
-
+    def _str_(self):
+        return f"{self.company_name} ({self.user.username})"
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -136,3 +150,66 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+
+
+
+class Freelancer(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    age = models.PositiveIntegerField()
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100)
+    mobile = models.CharField(max_length=15, unique=True)
+    email = models.EmailField(unique=True)
+    github_id = models.CharField(max_length=100, blank=True, null=True)
+    cv_file = models.FileField(upload_to='cv_documents/')
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.00)
+
+    def _str_(self):
+        return f"{self.name} ({self.user.username})"
+    
+
+class Project(models.Model):
+    business = models.ForeignKey(Business1, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    category = models.CharField(max_length=100)
+    description = models.TextField()
+    timeline = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    stipend = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def _str_(self):
+        return f"{self.category} - {self.business.company_name}"
+    
+
+class ProposedProject(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+    proposal_description = models.TextField()
+    approved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def _str_(self):
+        return f"Proposal by {self.freelancer.name} for {self.project.category}"
+
+# # Assigned Project Model (Tracks progress of approved projects)
+class AssignedProject(models.Model):
+    
+    
+    
+    Inprogress = models.BooleanField(default=True)
+    
+    assigned_at = models.DateTimeField(auto_now_add=True)
+    completed_at = models.DateTimeField(blank=True, null=True)
+    business = models.ForeignKey(Business1, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    category = models.CharField(max_length=100)
+    description = models.TextField()
+    timeline = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    stipend = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+
+    def _str_(self):
+        return f"{self.proposal.project.category} - {self.status}"
+    

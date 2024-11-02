@@ -1,82 +1,62 @@
-/* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body styles */
+/* static/home/styles.css */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4; /* Light grey background */
-    color: #333; /* Dark grey text */
-}
-
-/* Container styles */
-.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full height of viewport */
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
 }
 
-/* Login container styles */
 .login-container {
-    background: white; /* White background for the login form */
-    padding: 30px;
+    width: 300px;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    width: 300px; /* Set a width for the login box */
-}
-
-/* Heading styles */
-h2 {
     text-align: center;
-    margin-bottom: 20px; /* Space below the heading */
 }
 
-/* Input field styles */
-.input-field {
-    margin-bottom: 15px; /* Space between input fields */
+h2 {
+    margin-bottom: 20px;
 }
 
-.input-field label {
-    display: block; /* Stack labels above inputs */
-    margin-bottom: 5px; /* Space below labels */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-.input-field input {
-    width: 100%; /* Full width input */
+label {
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn-login {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 4px; /* Rounded corners */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-/* Role selection styles */
-.role-selection {
-    margin-bottom: 15px; /* Space below role selection */
+.btn-login:hover {
+    background-color: #0056b3;
 }
 
-.role-selection select {
-    width: 100%; /* Full width select */
-    padding: 10px;
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 4px; /* Rounded corners */
-}
-
-/* Button styles */
-.login-btn {
-    width: 100%; /* Full width button */
-    padding: 10px;
-    background: #007bff; /* Blue background */
-    color: white; /* White text */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 16px; /* Larger font size */
-    cursor: pointer; /* Pointer cursor on hover */
-}
-
-.login-btn:hover {
-    background: #0056b3; /* Darker blue on hover */
+.messages .error {
+    color: #d9534f;
+    font-size: 14px;
+    margin-bottom: 15px;
 }

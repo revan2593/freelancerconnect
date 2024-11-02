@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business</title>
-    <link rel="stylesheet"  href="{% static 'home/business.css' %}"> <!-- Link to CSS file -->
+    <title>Business Directory</title>
+    <link rel="stylesheet" href="{% static 'home/business.css' %}">
 </head>
 <body>
 
@@ -14,22 +14,28 @@
         <h1>Business Directory</h1>
         <nav>
             <ul>
-                <li><a href="http://127.0.0.1:8000/">Home</a></li>
-                <li><a href="http://127.0.0.1:8000/login/">Login</a></li>
-                <li><a href="http://127.0.0.1:8000/businesses/">Businesses</a></li>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'loginpage' %}">Login</a></li>
+                <li><a href="{% url 'businesses' %}">Businesses</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="container"> <!-- Main container for better layout -->
+    <div class="container"> <!-- Main container for layout -->
         {% for business in businesses %}
             <div class="business-card"> <!-- Card for each business -->
-                <h2>{{ business.businessname }}</h2>
-                <h3>{{ business.businesstype }}</h3>
-                <p>{{ business.location }}</p>
+                <h2>{{ business.company_name }}</h2>
+                <h3>Type: {{ business.businesstype }}</h3>
+                <p>Headquarters: {{ business.headquarters }}</p>
                 <p>Email: {{ business.email }}</p>
                 <p>Rating: {{ business.rating }}</p>
-                <p>Website: <a href="{{ business.websiteurl }}">{{ business.websiteurl }}</a></p> <!-- Make URL clickable -->
+                <p>Website: 
+                    {% if business.website_link %}
+                        <a href="{{ business.website_link }}" target="_blank">{{ business.website_link }}</a>
+                    {% else %}
+                        No website available
+                    {% endif %}
+                </p>
             </div>
         {% endfor %}
     </div>

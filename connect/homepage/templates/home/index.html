@@ -19,6 +19,9 @@
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/login/">login</a></li>
                 <li> <a href="businesses/">business</a></li>
+                {%if user_name != "Null" %}
+                    <li> <a href="{% url 'profile' user_name %}"> profile </a> </li>
+                {% endif %}
             </ul>
         </nav>
     </header>

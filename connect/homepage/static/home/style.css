@@ -1,124 +1,90 @@
-/* Reset some default styles */
-body, h1, h2, p, ul {
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-/* Header styles */
+/* Header */
 header {
-    background: #007bff; /* Blue background */
-    color: #fff; /* White text */
-    padding: 20px 0;
+    background-color: #333;
+    padding: 20px;
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    font-size: 1.5em;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-nav ul {
-    list-style: none;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+    font-size: 24px;
     font-weight: bold;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* Hero section styles */
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Hero Section */
 .hero {
-    background-color: white;
-    color: black;
+    background-color: #f0f0f0;
     text-align: center;
-    padding: 100px 20px;
+    padding: 100px 0;
 }
 
 .hero h1 {
-    font-size: 2.5em;
+    font-size: 48px;
+    margin: 0;
 }
 
 .hero p {
+    font-size: 24px;
     margin: 20px 0;
-    font-size: 1.2em;
 }
 
 .hero button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background: #28a745; /* Green background */
-    color: white;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.hero button:hover {
-    background: #218838; /* Darker green on hover */
-}
-
-/* Features section styles */
+/* Features Section */
 .features {
-    background: #fff;
+    background-color: #f2f2f2;
+    padding: 50px;
     text-align: center;
-    padding: 50px 20px;
 }
 
 .features h2 {
-    margin-bottom: 20px;
+    font-size: 36px;
+    margin-bottom: 30px;
 }
 
 .feature-item {
-    font-size: 1.2em;
-    margin: 10px 0;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
-/* Footer styles */
+/* Footer */
 footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
-    position: absolute;
+    padding: 20px;
+    position: relative;
     bottom: 0;
-    width: 100%;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    header nav ul li {
-        display: block;
-        margin: 10px 0;
-    }
-
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .hero p {
-        font-size: 1em;
-    }
-
-    .hero button {
-        font-size: 0.9em;
-    }
 }
