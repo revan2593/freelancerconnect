@@ -23,3 +23,12 @@ urlpatterns = [
     path('',include('homepage.urls')),
     path('login/',auth_views.LoginView.as_view(template_name='home/login.html'),name='login')
 ]
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path
+
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

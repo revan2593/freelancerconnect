@@ -38,10 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'star_ratings'
+    'crispy_forms',
+    'django_filters',
+    'bootstrap4',
+    'crispy_bootstrap5',
+
+
+
 ]
 
+
+
 MIDDLEWARE = [
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,3 +141,32 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
  # Replace 'yourapp' with the actual name of your app
 
+AUTHENTICATION_BACKENDS = (
+    
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+    
+)
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+import os
+
+# Define the base directory
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# MEDIA_ROOT: The directory where media files will be stored
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# MEDIA_URL: The URL that will serve the media files
+MEDIA_URL = '/media/'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'diggavirevanya@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD =  'dsvg opgc hzli wtia' # Your email password
