@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="{% static 'home/register.css' %}"> <!-- Link to the CSS file -->
-   
+    
 <body>
     <div class="container">
         <h2>Register</h2>
@@ -14,11 +15,11 @@
             {% csrf_token %}
             <div class="form-section">
                 <h3>User Information</h3>
-                {{ user_form.as_p }}
+                {{ user_form|crispy }}
             </div>
             <div class="form-section">
                 <h3>User Role</h3>
-                {{ profile_form.as_p }}
+                {{ profile_form|crispy }}
             </div>
             <button type="submit" class="btn">Register</button>
         </form>

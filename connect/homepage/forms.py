@@ -20,7 +20,10 @@ class FreelancerForm(forms.ModelForm):
         model = Freelancer
         fields = ['user_name','name', 'age', 'city', 'country', 'mobile', 'email', 'github_id', 'cv_file']
 
-
+class FreelancerForm2(forms.ModelForm):
+    class Meta:
+        model = Freelancer
+        fields = ['photo','name', 'age', 'city', 'country', 'mobile', 'email', 'github_id', 'cv_file']
 
 class BusinessForm(forms.ModelForm):
     class Meta:
@@ -29,6 +32,15 @@ class BusinessForm(forms.ModelForm):
             'user_name',
             'businesstype', 'company_name', 'businesstype' , 'headquarters', 
             'email', 'website_link'
+        ]
+       
+class BusinessForm2(forms.ModelForm):
+    class Meta:
+        model = Business1
+        fields = [
+            'photo',
+            'businesstype', 'company_name', 'businesstype' , 'headquarters', 
+            'email', 'website_link',
         ]
        
 
@@ -40,11 +52,19 @@ class ProjectForm(forms.ModelForm):
         fields = [ 'title', 'category', 'description', 'timeline', 'stipend']
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Describe the project here...'}),
-            'timeline': forms.NumberInput(attrs={'step': 0.01, 'placeholder': 'e.g., 30.5 days'}),
+            'timeline': forms.NumberInput(attrs={'step': 0.01 , 'placeholder': 'e.g., 30.5 days'}),
             'stipend': forms.NumberInput(attrs={'step': 0.01, 'placeholder': 'e.g., 1000.00'}),
         }
 
 class DescriptionForm(forms.ModelForm):
+    class Meta:
+        model=ProposedProject
+        fields =['proposal_description']
+        widgets = {
+            'proposal_description': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Describe your proposal'})
+        }
+
+class review(forms.ModelForm):
     class Meta:
         model=ProposedProject
         fields =['proposal_description']

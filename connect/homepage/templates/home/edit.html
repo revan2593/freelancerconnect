@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="{% static 'home/edit.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Edit Your Profile</h1>
+    </header>
+
+    <main>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="profile-header">
+                <div class="profile-icon">
+                    <img src="{{ form.instance.photo.url }}"  >
+                    
+                </div>
+            </div>
+
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Freelancer Connect</p>
+    </footer>
+</body>
+</html>

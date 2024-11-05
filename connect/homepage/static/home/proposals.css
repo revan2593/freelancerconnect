@@ -1,83 +1,114 @@
-/* General Reset */
+/* proposals.css */
+
+/* Basic reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
+/* Body styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ecf0f1; /* Light background for good contrast */
-    color: #2c3e50; /* Main text color */
+    background-color: #f4f6f9;
+    color: #333;
 }
 
-header {
-    background-color: #34495e; /* Dark header color */
-    color: #ffffff; /* White text for header */
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.5rem;
-}
-
+/* Main content styling */
 main {
-    padding: 20px;
     max-width: 800px;
-    margin: auto; /* Center the main content */
-    background: #ffffff; /* White background for the main area */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Headings */
 h2 {
-    color: #2980b9; /* Attractive color for subheadings */
-    margin-top: 20px;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
 }
 
 p {
-    margin-bottom: 10px; /* Spacing between paragraphs */
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #555;
 }
 
+/* Freelancer container styling */
 .freelancer-container {
     display: flex;
-    flex-wrap: wrap; /* Allow freelancers to wrap to new lines */
-    gap: 20px; /* Space between freelancer cards */
+    flex-direction: column;
+    gap: 20px;
 }
 
+.freelancer-container h2 {
+    font-size: 1.5em;
+    color: #3498db;
+}
+
+/* Freelancer card */
+.freelancer-container > div {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s ease;
+}
+
+.freelancer-container > div:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Link styling */
+a {
+    display: inline-block;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* Buttons styling for "See Profile" and "Offer" links */
+a.button-link {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 0.9em;
+    margin-right: 10px;
+}
+
+a.button-link:hover {
+    background-color: #2980b9;
+}
+
+/* Freelancer card styling */
 .freelancer-card {
-    background: #f7f9fa; /* Light gray background for freelancer cards */
-    border: 1px solid #dcdfe1; /* Border for cards */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px; /* Padding inside cards */
-    flex: 1 1 calc(33% - 20px); /* Responsive card sizing */
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    transition: transform 0.2s; /* Smooth scaling effect */
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: box-shadow 0.3s ease;
 }
 
 .freelancer-card:hover {
-    transform: scale(1.03); /* Slightly scale up on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-footer {
-    text-align: center; /* Center footer text */
-    padding: 20px;
-    background-color: #34495e; /* Dark footer background */
-    color: #ffffff; /* White footer text */
-    position: relative; /* Allow for positioning */
-    bottom: 0;
-    width: 100%;
-}
-
-@media (max-width: 768px) {
-    .freelancer-card {
-        flex: 1 1 calc(50% - 20px); /* 2 cards per row on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .freelancer-card {
-        flex: 1 1 100%; /* 1 card per row on very small screens */
-    }
+/* Button group styling */
+.button-group {
+    margin-top: 10px;
 }

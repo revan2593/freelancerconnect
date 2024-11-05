@@ -1,3 +1,6 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -8,23 +11,27 @@
     <title>Freelancer Applications for {{ project.category }}</title>
 </head>
 <body>
-    <header>
-        <h1>Applications for {{ project.category }}</h1>
-    </header>
-
+    
     <main>
+        <h1>Project Title :</h1>
+        <p> {{project.title}} </p>
+      
         <h2>Project Description</h2>
         <p>{{ project.description }}</p>
         
         <h2>Applied Freelancers</h2>
         <div class="freelancer-container">
             {% if req_ids %}
-                {%for freelancer in total_ids%}
-                    {%if freelancer.id in req_ids %}
-                        
-                        <h2>{{freelancer.name}} </h2>
-                        <a href= "{% url 'profile' freelancer.user_name %}"> see profile</a>
-                        <a href= "{% url 'offer' project.id freelancer.id %}"> offer </a>
+                {% for freelancer in total_ids %}
+                    {% if freelancer.id in req_ids %}
+                        <div class="freelancer-card">
+                            <h3>{{ freelancer.name }}</h3>
+                            <p>rating: {{freelancer.rating}} </p>
+                            <div class="button-group">
+                                <a href="{% url 'profile' freelancer.user_name %}" class="button-link">See Profile</a>
+                                <a href="{% url 'offer' project.id freelancer.id %}" class="button-link">Offer</a>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% else %}
@@ -33,8 +40,6 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Freelancer Connect</p>
-    </footer>
 </body>
 </html>
+{% endblock %}

@@ -17,6 +17,10 @@ urlpatterns = [
    path('profile/<str:user_name>/',views.profile ,name='profile'),
    path('profile/<int:project_id>/<int:freelancer_id>',views.offer ,name='offer'),
    path('accept/<int:project_id>/',views.accept,name='accept'),
-   path('complete/<int:project_id>/',views.complete,name='complete'),
-  
+   path('review/<int:project_id>',views.give_review,name='review'),
+   path('reject/<int:project_id>/',views.reject,name='reject'),
+   path('edit-profile/', views.edit_profile, name='edit_profile'),
+   path('freelancers/',views.freelancer, name='freelancers'),
+
 ]
+

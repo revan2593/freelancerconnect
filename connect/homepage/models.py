@@ -8,10 +8,11 @@
 from django.db import models
 
 from django.contrib.auth.models import User
-
+import django_filters
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     username = models.CharField(max_length=150, unique=True)
+    setup = models.BooleanField(default=False)
     ROLE_CHOICES = (
         ('freelancer', 'Freelancer'),
         ('business', 'Business'),
@@ -34,7 +35,7 @@ class Business1(models.Model):
     email = models.EmailField(unique=True)
     website_link = models.URLField(max_length=255, blank=True, null=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.00)
-
+    photo = models.ImageField(upload_to='profile_photos/', default='images.jpeg')
     def _str_(self):
         return f"{self.company_name} ({self.user.username})"
 
@@ -165,7 +166,7 @@ class Freelancer(models.Model):
     github_id = models.CharField(max_length=100, blank=True, null=True)
     cv_file = models.FileField(upload_to='cv_documents/')
     rating = models.DecimalField(max_digits=3, decimal_places=2, default=0.00)
-
+    photo = models.ImageField(upload_to='profile_photos/', default='images.jpeg')
     def _str_(self):
         return f"{self.name} ({self.user.username})"
     
@@ -213,3 +214,9 @@ class AssignedProject(models.Model):
     def _str_(self):
         return f"{self.proposal.project.category} - {self.status}"
     
+
+class ratingsystem(models.Model):
+    rate = models.DecimalField(max_digits=2, decimal_places=1)
+    review = models.TextField()
+    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+    project = models.ForeignKey(AssignedProject,on_delete=models.CASCADE) 
