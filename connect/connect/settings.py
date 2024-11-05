@@ -89,8 +89,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'freelancer',  
         'USER': 'root',  
-        'PASSWORD': 'jnvkanpur259',  
-        'HOST': '127.0.0.1',  
+        'PASSWORD': 'password',  
+        'HOST': '127.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
@@ -168,5 +168,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'diggavirevanya@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD =  'dsvg opgc hzli wtia' # Your email password
+EMAIL_HOST_USER = 'xx@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD =  'dsvg opgc' # Your email password
