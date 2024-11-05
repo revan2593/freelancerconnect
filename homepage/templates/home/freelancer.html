@@ -1,0 +1,78 @@
+{% extends 'home/base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Directory</title>
+    <link rel="stylesheet" href="{% static 'home/business.css' %}">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <form method="get" class="filter-form p-3 border rounded bg-light">
+        <div class="form-group mb-3">
+            <label for="name" class="form-label">Freelancer Name</label>
+            <input type="text" name="name" id="company_name" 
+                   class="form-control" placeholder="Enter Freelancer name to search">
+        </div>
+        <button type="submit" class="btn btn-primary">Seacrh</button>
+    </form>
+    
+    {% for freelancer in filter.qs %}
+         
+            <div class="business-card"> <!-- Card for each business -->
+                <div class="information" >
+
+                    <h2>Name: {{ freelancer.name }}</h2>
+                    <a href="{% url 'profile' freelancer.user_name %}" > {{ freelancer.user_name }} </a>
+                    <p>Age: {{ freelancer.age }}</p>
+                    <p>City: {{ freelancer.city }}</p>
+                    <p>E-mail: {{ freelancer.email }}</p>
+                </div>
+                <div class="image">
+                    <img src="{{ freelancer.photo.url }}"  >
+                </div>
+            </div>
+        
+    {% empty %}
+    
+        <div class="container"> <!-- Main container for layout -->
+            <h2> No such Freelancers here are other Freelancer </h2>
+            {% for freelancer in freelancers %}
+                <div class="business-card"> <!-- Card for each business -->
+                    <div class="information" >
+
+                        <h2>Name: {{ freelancer.name }}</h2>
+                        <a href="{% url 'profile' freelancer.user_name %}" > {{ freelancer.user_name }} </a>
+                        <p>Age: {{ freelancer.age }}</p>
+                        <p>City: {{ freelancer.city }}</p>
+                        <p>E-mail: {{ freelancer.email }}</p>
+                    </div>
+                    <div class="image">
+                        <img src="{{ freelancer.photo.url }}"  >
+                    </div>
+                </div>
+            {% endfor %}
+        </div> 
+    {% endfor %}
+        
+
+   
+
+
+    
+
+        
+
+    
+
+
+
+</body>
+</html>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Freelancer Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'home/base.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Freelancer Connect</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'homepage' %}">Homepage</a></li>
+                <li><a href="{% url 'businesses' %}">Business</a></li>
+                <li><a href="{% url 'freelancers' %}">Freelancers</a></li>
+                <li><a href="{% url 'projects' %}">Projects</a></li>
+                {% if user.is_authenticated != False %}
+                    <li><a href="{% url 'logoutpage' %}">Logout</a></li>
+                    <li><a href="{% url 'profile' user.username %}">Profile</a></li>
+                {% else %}
+                    <li><a href="{% url 'loginpage' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2024 Freelancer Connect. All rights reserved.</p>
+    </footer>
+</body>
+</html>

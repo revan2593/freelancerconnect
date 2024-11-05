@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Directory</title>
+    <link rel="stylesheet" href="{% static 'home/business.css' %}">
+    
+</head>
+<body>
+
+    <!-- Header Section -->
+    <form method="get" class="filter-form p-3 border rounded bg-light">
+        <div class="form-group mb-3">
+            <label for="company_name" class="form-label">Company Name</label>
+            <input type="text" name="company_name" id="company_name" 
+                   class="form-control" placeholder="Enter company name">
+        </div>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    
+    {% for business in filter.qs %}
+        <div class="business-card"> <!-- Card for each business -->
+            <div class="information" >
+            <h2>{{ business.company_name }}</h2>
+            <a href="{% url 'profile' business.user_name %}" > view profile </a>
+            <h3>Type: {{ business.businesstype }}</h3>
+            <p>Headquarters: {{ business.headquarters }}</p>
+            <p>Email: {{ business.email }}</p>
+            <p>Rating: {{ business.rating }}</p>
+            <p>Website: 
+                {% if business.website_link %}
+                    <a href="{{ business.website_link }}" target="_blank">{{ business.website_link }}</a>
+                {% else %}
+                    No website available
+                {% endif %}
+            </p>
+            </div>
+            <div class="image">
+                <img src="{{ business.photo.url }}"  >
+            </div>
+        </div>
+    {% empty %}
+       
+        <div class="container"> <!-- Main container for layout -->
+            <h2> No such companies here are other companies </h2>
+            {% for business in businesses %}
+                <div class="business-card"> <!-- Card for each business -->
+                    <h2>{{ business.company_name }}</h2>
+                    <a href="{% url 'profile' business.user_name %}" > view profile </a>
+                    <h3>Type: {{ business.businesstype }}</h3>
+                    <p>Headquarters: {{ business.headquarters }}</p>
+                    <p>Email: {{ business.email }}</p>
+                    <p>Rating: {{ business.rating }}</p>
+                    <p>Website: 
+                        {% if business.website_link %}
+                            <a href="{{ business.website_link }}" target="_blank">{{ business.website_link }}</a>
+                        {% else %}
+                            No website available
+                        {% endif %}
+                    </p>
+                </div>
+            {% endfor %}
+        </div> 
+    {% endfor %}
+        
+
+   
+
+</body>
+</html>
+
+{% endblock %}

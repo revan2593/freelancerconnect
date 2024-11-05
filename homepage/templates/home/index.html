@@ -1,0 +1,209 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Platform</title>
+    <link rel="stylesheet" href="{%static 'home/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .panel {
+          padding: 0 18px;
+          background-color: white;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.2s ease-out;
+        }
+        </style>
+        
+        
+</head>
+
+<body>
+        <div class="first">
+            <div class="info"> 
+                <h1>Welcome to Freelancer Connect</h1>
+                <p>Connecting Freelancers and Businesses with Ease</p>
+                <p>Empowering freelancers to find meaningful work while helping businesses access top talent. Join us in building a connected, thriving community.</p>
+                <p>"With Freelancer Connect, you can discover the perfect freelancer for any project. Together, we’re shaping the future of work."</p>
+                <a href="{%url 'freelancers' %}" class="button1"> explore freelancers </a>
+                <a href="{%url 'businesses' %}" class="button1"> explore business </a>
+           </div> 
+
+
+
+            
+            <div class="image" > 
+                <img src="{%static 'images/front.png' %}">
+            </div> 
+       </div> <img src="{%static 'images/company.png' %}">
+         
+   
+        <section class="hero" id="home">
+            
+            <p>Connecting Freelancers and Businesses with Ease</p>
+        {%if user_name != "Null" %}
+            {% if user.setup == False %}
+                {% if user.role == "freelancer"%}
+                    <div class="but">
+                    <a href="{% url 'setup_freelancer' %}" > Set up your Freelancer account </a>
+                    </div>
+                {% else %}
+                    <div class="but">
+                    <a href="{% url 'setup_corporate' %}" > Set up your Business account </a>
+                    </div>
+                {% endif %}
+            {% endif %}
+            
+        {% endif %}
+        </section>
+    
+          
+
+    <section class="features" id="services">
+        <h2>Our Features</h2>
+        <div class="feature-item">✔ Easy Project Posting</div>
+        <div class="feature-item">✔ Diverse Freelancer Pool</div>
+        <div class="feature-item">✔ Rate freelancers </div>
+    </section>
+    
+    <div class="wrapper">
+        <i id="left" class="fa-solid  fas fa-angle-left"></i>
+        <ul class="carousel">
+            <li class="card">
+                <div class="img"><img src=
+"{%static 'images/1.webp' %}" 
+                                      alt="" draggable="false"> </div>
+                <h2 style="color: green; font-weight:bold;">Transform Ideas into Reality</h2>
+                <span>Collaborate with skilled freelancers who bring creativity and expertise to every project, helping you turn concepts into impactful results.</span>
+
+            </li>
+            <li class="card">
+                <div class="img"><img src=
+"{%static 'images/2.webp' %}"
+                                      alt="" draggable="false"> </div>
+                <h2 style="color: green; font-weight:bold;">Admission Editing and Professional Services</h2>
+                <span>Maximise your chances of acceptance with our admission editing services,meticulousliy crafting polishing your essays and applications</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src=
+"{%static 'images/3.webp' %}"
+                                      alt="" draggable="false"> </div>
+                <h2 style="color: green; font-weight:bold;">Business Editing and Proofing Services</h2>
+                <span>Emoover your business communication with our professional freelancers,ensuring precisions, clarity ,and imaoct in every report</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src=
+"{%static 'images/4.webp' %}"
+                                      alt="" draggable="false"> </div>
+                <h2 style="color: green; font-weight:bold;">Career Editing and Proofreading Services</h2>
+                <span>Elevate your professional standing with our career editing serviices, ensuring you present the best version of your professional self to potential employers.</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src=
+"{%static 'images/5.webp' %}"
+                                      alt="" draggable="false"> </div>
+                <h2 style="color: green; font-weight:bold;">Customized Solutions for Every Business</h2>
+<span>Connect with specialists who understand your unique business needs and can deliver tailored solutions that help you achieve your goals.</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src=
+"{%static 'images/6.webp' %}"
+                                      alt="" draggable="false"> </div>
+                <h2 style="color: green; font-weight:bold;">Quality and Affordability Combined</h2>
+<span>Get access to quality freelance services that fit within your budget. Discover talents that offer both expertise and value.</span>
+            </li>
+        </ul>
+        <i id="right" class="fa-solid fas fa-angle-right"></i>
+    </div>
+
+
+
+
+   
+    <div class="tatti">
+    <div class="card">
+        <h2 class="'hal">Our Testimonials and Experience</h2>
+        <br>
+        <h2>What we bring to the table</h2>
+        <br>
+        <p>Freelancer Connect is built on 24 years worth of experience, working on over 343,000 projects with over 98,000 clients. Join the thousands of people who have chosen Freelancer Connect to find the best and brightest talent.</p>
+        <br>
+        <p class="hel">Average overall rating</p>
+        <div class="rating">
+            <span class="star"><i class="fa fa-star"></i></span>
+            <span class="star"><i class="fa fa-star"></i></span>
+            <span class="star"><i class="fa fa-star"></i></span>
+            <span class="star"><i class="fa fa-star"></i></span>
+            <span class="star"><i class="fa fa-star-half-o"></i></span>
+            <span class="average-rating">4.911/5</span>
+        </div>
+        
+        <p class="hel">127,391 Rated Projects</p>
+    </div>
+    </div>
+
+    <section id="steps">
+        <div>
+            <h3>How It Works</h3>
+            <h2>Apply for Project in Three steps</h2>
+            <div>
+                <div><i class="fa fa-users"></i>
+                    <div class="hey">
+                        Explore available projects.
+                    </div>
+                    <p>Look up for projects best suited based on your skills.</p>
+                </div>
+                <div>
+                    <i class="fa fa-caret-right"></i>
+                </div>
+                <div>
+                    <i class="fa fa-cloud-upload"></i>
+                    <div class="hey">Send proposal</div>
+                    <p>Make a proposal for the chosen Project</p>
+                </div>
+                <div>
+                    <i class="fa fa-caret-right"></i>
+                </div>
+                <div>
+                    <i class="fa fa-pencil-square-o"></i>
+                    <div class="hey">Accept offered project</div>
+                    <p>Accept offers made to you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="total">
+    <div class="card1">
+        <h2>Choose Your Highly Rated and Reviewed Freelancer</h2>
+        <p>Rather than being matched with a random professional, 
+            <br> Freelancer Connect allows you to select from a marketplace filled with top-rated talent across a variety of fields.</p>
+        <div>
+            <p>Many of our freelancers:</p>
+            <ul>
+                <li>Hold advanced degrees and specialized certifications</li>
+                <li>Bring years of experience to their respective industries</li>
+                <li>Have earned hundreds of client ratings and reviews</li>
+                <li>Offer expertise across a wide range of domains</li>
+            </ul>
+        </div>
+        <a href="{% url 'freelancers' %}" class="button1">Find Your Freelancer</a>
+    </div>
+    
+    <div class="img2">
+        <img src="{%static 'images/image10.png' %}">
+    <div>
+    </div>
+   
+        
+</body>
+</html>
+{% endblock %}
+
+
+
